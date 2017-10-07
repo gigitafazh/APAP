@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 import com.example.dao.SidukMapper;
 import com.example.model.PendudukModel;
 import com.example.model.KeluargaModel;
+import com.example.model.KelurahanModel;
+import com.example.model.KecamatanModel;
+import com.example.model.KotaModel;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -16,24 +19,12 @@ import lombok.extern.slf4j.Slf4j;
 public class SidukServiceDatabase implements SidukService {
 	@Autowired
 	private SidukMapper sidukMapper;
-
+	
 	// method view penduduk
 	@Override
 	public PendudukModel selectPenduduk(String nik) {
 		log.info("select penduduk with nik {}", nik);
 		return sidukMapper.selectPenduduk(nik);
-	}
-
-	// method add penduduk
-	@Override
-	public void addPenduduk(PendudukModel penduduk) {
-		sidukMapper.addPenduduk(penduduk);
-	}
-
-	// method update penduduk
-	@Override
-	public void updatePenduduk(PendudukModel penduduk) {
-		sidukMapper.updatePenduduk(penduduk);
 	}
 	
 	// method view keluarga
@@ -42,4 +33,5 @@ public class SidukServiceDatabase implements SidukService {
 		log.info("select keluarga with nomor_kk {}", nomor_kk);
 		return sidukMapper.selectKeluarga(nomor_kk);
 	}
+
 }

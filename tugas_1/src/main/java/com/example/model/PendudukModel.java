@@ -13,12 +13,12 @@ public class PendudukModel {
 	private String tempat_lahir;
 	private String tanggal_lahir;
 	private String jenis_kelamin;
+	private int is_wni;
+	private int id_keluarga;
 	private String agama;
 	private String pekerjaan;
 	private String status_perkawinan;
 	private String status_dalam_keluarga;
 	private String golongan_darah;
-	private Boolean is_wafat;
-	private Boolean is_wni;
-	private Integer id_keluarga;
+	private int is_wafat;
 }

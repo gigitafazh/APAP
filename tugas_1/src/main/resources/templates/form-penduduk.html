@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width" />
+<title>Tugas 1 APAP</title>
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet"
+	href="/webjars/font-awesome/css/font-awesome.min.css"></link>
+<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+<script type="text/javascript"
+	src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+
+
+<body>
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/">SI Kependudukan</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="/">Home</a></li>
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#">Masukkan Data<span
+						class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="/penduduk/aad">Data Penduduk</a></li>
+						<li><a href="/keluarga/add">Data Keluarga</a></li>
+					</ul></li>
+			</ul>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-9">
+				<h3>Sistem Informasi Kependudukan Online Provinsi DKI Jakarta</h3>
+				<form class="form-group" action="/penduduk/add" method="POST"
+					th:object="${penduduk}">
+					<table class="table-condensed" style="margin-top: 30px; width: 70%">
+						<tbody>
+							<tr>
+								<td class="col-md-2" for="nama">Nama</td>
+								<td class="col-md-2"><input class="form-control col-sm-6"
+									type="text" name="nama" th:field="*{nama}" required="true"></input></td>
+							</tr>
+							<tr>
+								<td class="col-md-2" for="tempat_lahir">Tempat Lahir</td>
+								<td class="col-md-4"><input class="form-control col-sm-6"
+									type="text" name="tempat_lahir" th:field="*{tempat_lahir}"
+									required="true"></input></td>
+							</tr>
+							<tr>
+								<td class="col-md-2" for="tanggal_lahir">Tempat Lahir</td>
+								<td class="col-md-4"><input class="form-control col-sm-6"
+									type="date" name="tanggal_lahir" th:field="*{tanggal_lahir}"
+									required="true"></input></td>
+							</tr>
+							<tr>
+								<td class="col-md-2" for="jenis_kelamin">Jenis Kelamin</td>
+								<td class="col-md-4"><select class="form-control"
+									name="jenis_kelamin" th:value="*{jenis_kelamin}"
+									required="true">
+										<option selected="true" disabled="disabled" th:value="''"></option>
+										<option th:value="'0'">Laki-laki</option>
+										<option th:value="'1'">Perempuan</option>
+								</select></td>
+							</tr>
+							<tr>
+								<td class="col-md-2" for="golongan_darah">Golonngan Darah</td>
+								<td class="col-md-4">Keluarga select class="form-control"
+									id="sel1" name="golongan_darah" th:value="*{golongan_darah}"
+									required = "true">
+									<option selected="true" disabled="disabled" value=""></option>
+									<option th:value="'A'">A</option>
+									<option th:value="'B'">B</option>
+									<option th:value="'AB'">AB</option>
+									<option th:value="'O'">O</option> </select>
+								</td>
+							</tr>
+							<tr>
+								<td class="col-md-2" for="status_perkawinan">Status
+									Perkawinan</td>
+								<td class="col-md-4"><select class="form-control"
+									name="status_perkawinan" th:value="*{status_perkawinan}"
+									required="true">
+										<option selected="true" disabled="disabled" value=""></option>
+										<option th:value="'Belum Kawin'">Belum Kawin</option>
+										<option th:value="'Kawin'">Kawin</option>
+								</select></td>
+							</tr>
+							<tr>
+								<td class="col-md-2"></td>
+								<td class="col-md-4"></td>
+							</tr>
+							<tr>
+								<td class="col-md-2"></td>
+								<td class="col-md-4"></td>
+							</tr>
+							<tr>
+								<td class="col-md-2"></td>
+								<td class="col-md-4"></td>
+							</tr>
+							<tr>
+								<td class="col-md-2"></td>
+								<td class="col-md-4"></td>
+							</tr>
+							<tr>
+								<td class="col-md-2"></td>
+								<td class="col-md-4"></td>
+							</tr>
+							<tr>
+								<td class="col-md-2"></td>
+								<td class="col-md-4"></td>
+							</tr>
+							<tr>
+								<td class="col-md-2"></td>
+								<td class="col-md-4"></td>
+							</tr>
+						</tbody>
+					</table>
+				</form>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+	</div>
+</body>
+</html>
