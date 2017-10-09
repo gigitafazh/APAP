@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class KecamatanModel {
 	private int id;
-	private String kode_kota;
-	private String nama_kota;
+	private int id_kota;
+	private String kode_kecamatan;
+	private String nama_kecamatan;
 }

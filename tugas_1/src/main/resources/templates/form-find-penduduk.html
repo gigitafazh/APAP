@@ -5,7 +5,7 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width" />
-	<title>Tugas 1 APAP</title>
+	<title>Cari Data Penduduk</title>
 	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="/webjars/font-awesome/css/font-awesome.min.css"></link>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
@@ -26,10 +26,11 @@
 				<li class="active"><a href="/">Home</a></li>
 				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Masukkan Data<span class="caret"></span></a>
 			        <ul class="dropdown-menu">
-			        	<li><a href="/penduduk/aad">Data Penduduk</a></li>
+			        	<li><a href="/penduduk/add">Data Penduduk</a></li>
 			          	<li><a href="/keluarga/add">Data Keluarga</a></li>
 			        </ul>
 		      	</li>
+				<li class="active"><a href="/">Cari Data Penduduk</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -42,11 +43,14 @@
 				<h5>Selamat datang di Sistem Informasi Kependudukan Online Provinsi DKI Jakarta</h5>
 				<hr/>
 				
-				<h4>Lihat Data Penduduk Berdasarkan NIK</h4>
-				<h6>Masukkan Nomor Induk Kependudukan</h6>
+				<h4>Lihat Data Penduduk Berdasarkan Kota</h4>
 				<form class="form-group" action="/penduduk/view" method="GET">
 					<div class="row">
-						<input class="form-control col-sm-4" style="margin-left:25px; width:60%" type="text" name="nik" required = "true"/>
+						<select class="form-control" name="kt" required = "true" >
+						<option th:if="${nama_kota} != null" readonly = "readonly" th:value="${nama_kota}" th:text="${nama_kota}"></option> 
+						<option th:if="${nama_kota} == null" selected="true" disabled="disabled"></option> 
+				        <option th:if="${nama_kota} == null" th:each="kota,iterationStatus: ${kota_list}" th:value="${kota.nama_kota}" th:text="${kota.nama_kota}">Kota</option>
+				    </select>
 					</div>
 					<div>
 						<button class="btn-primary" style="margin-top:10px;  margin-left:10px" type="submit">Lihat</button>

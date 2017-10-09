@@ -6,13 +6,13 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width" />
 	<title>Tugas 1 APAP</title>
-	<link rel="stylesheet" type="text/css"
-		href="/webjars/bootstrap/css/bootstrap.min.css" />
-	<link rel="stylesheet"
-		href="/webjars/font-awesome/css/font-awesome.min.css"></link>
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="/webjars/font-awesome/css/font-awesome.min.css"></link>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
 	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
-	<script type="text/javascript"
-	src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 
@@ -55,6 +55,26 @@
 					        	Penduduk Tempat Lahir/Penduduk Tanggal Lahir</td>
 						</tr>
 						<tr>
+							<td class="col-md-2">Alamat</td>
+							<td class="col-md-4" th:text="${keluarga.alamat}">Keluarga Alamat</td>
+						</tr>
+						<tr>
+							<td class="col-md-2">RT/RW</td>
+							<td class="col-md-4" th:text="${keluarga.RT} + '/' + ${keluarga.RW}">Keluarga RT/RW</td>
+						</tr>
+						<tr>
+							<td class="col-md-2">Desa/Kelurahan</td>
+							<td class="col-md-4" th:text="${kelurahan.nama_kelurahan}">Kelurahan Desa/Kelurahan</td>
+						</tr>
+						<tr>
+							<td class="col-md-2">Kecamatan</td>
+							<td class="col-md-4" th:text="${kecamatan.nama_kecamatan}">Kecamatan kecamatan</td>
+						</tr>
+						<tr>
+							<td class="col-md-2">Kota</td>
+							<td class="col-md-4" th:text="${kota.nama_kota}">Kota kota</td>
+						</tr>
+						<tr>
 							<td class="col-md-2">Jenis Kelamin</td>
 							<td class="col-md-4" th:text="${penduduk.jenis_kelamin} == 0 ? 'Laki-laki' : 'Perempuan'">Penduduk Jenis Kelamin</td>
 						</tr>
@@ -82,6 +102,7 @@
 							<td class="col-md-2">Status Kematian</td>
 							<td class="col-md-4" th:text="${penduduk.is_wafat} == 0 ? 'Hidup' : 'Wafat'">Penduduk Status Kematian</td>
 						</tr>
+						
 						<tr>
 							<td></td>
 							<td><a href="#" class="btn btn-danger">Nonaktifkan</a>

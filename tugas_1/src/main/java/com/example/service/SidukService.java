@@ -9,10 +9,26 @@ import com.example.model.KotaModel;
 import com.example.model.PendudukModel;
 
 public interface SidukService {
+	// penduduk service
 	// view penduduk
 	PendudukModel selectPenduduk(String nik);
-	
+
+	// select view penduduk get data di keluarga
+	KeluargaModel selectKeluargaById(int id_keluarga);
+
+	// select view penduduk get data di keluarga, kelurahan
+	KelurahanModel selectKelurahanById(int id_kelurahan);
+
+	// select view penduduk get data di keluarga, kelurahan, kecamatan
+	KecamatanModel selectKecamatanById(int id_kecamatan);
+
+	// select view penduduk get data di keluarga, kelurahan, kecamatan
+	KotaModel selectKotaById(int id_kota);
+
+	// keluarga service
 	// view keluarga
 	KeluargaModel selectKeluarga(String nomor_kk);
 
+	// select view anggota keluarga penduduk di keluarga
+	List<PendudukModel> selectPendudukById(int id_keluarga);
 }

@@ -3,16 +3,16 @@
 
 <head>
 <meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width" />
-<title>Tugas 1 APAP</title>
-<link rel="stylesheet" type="text/css"
-	href="/webjars/bootstrap/css/bootstrap.min.css" />
-<link rel="stylesheet"
-	href="/webjars/font-awesome/css/font-awesome.min.css"></link>
-<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
-<script type="text/javascript"
-	src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width" />
+	<title>Masukkan Data Penduduk</title>
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="/webjars/font-awesome/css/font-awesome.min.css"></link>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 
@@ -71,15 +71,19 @@
 								</select></td>
 							</tr>
 							<tr>
-								<td class="col-md-2" for="golongan_darah">Golonngan Darah</td>
-								<td class="col-md-4">Keluarga select class="form-control"
-									id="sel1" name="golongan_darah" th:value="*{golongan_darah}"
-									required = "true">
-									<option selected="true" disabled="disabled" value=""></option>
-									<option th:value="'A'">A</option>
-									<option th:value="'B'">B</option>
-									<option th:value="'AB'">AB</option>
-									<option th:value="'O'">O</option> </select>
+								<td class="col-md-2" for="golongan_darah">Golongan Darah</td>
+								<td class="col-md-4">
+									<select class="form-control" id="sel1" name="golongan_darah" th:value="*{golongan_darah}">
+										<option selected="true" disabled="disabled" value=""></option> 
+										<option th:value="'A+'">A+</option>
+										<option th:value="'A-'">A-</option>
+										<option th:value="'B+'">B+</option>
+										<option th:value="'B-'">B-</option>
+										<option th:value="'O+'">O+</option>
+										<option th:value="'O-'">O-</option>
+										<option th:value="'AB+'">AB+</option>
+										<option th:value="'AB-'">AB-</option>
+									</select>
 								</td>
 							</tr>
 							<tr>
