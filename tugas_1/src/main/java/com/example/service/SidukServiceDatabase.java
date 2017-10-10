@@ -70,7 +70,6 @@ public class SidukServiceDatabase implements SidukService {
 	// }
 	public void updatePenduduk(PendudukModel penduduk) {
 		sidukMapper.updatePenduduk(penduduk);
-		System.out.println("sdafabdghmjhgbvcdfghgnb vcxdfg");
 	}
 
 	// keluarga service database

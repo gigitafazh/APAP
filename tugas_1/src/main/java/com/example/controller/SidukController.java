@@ -85,10 +85,9 @@ public class SidukController {
 		return "form-penduduk";
 	}
 
-	//halaman success add penduduk 
+	//halaman success add penduduk tanpa generate nik
 	@RequestMapping(value="/penduduk/add/submit", method=RequestMethod.GET)
 	public String addPendudukSubmit(Model model, @ModelAttribute PendudukModel penduduk) {
-		//KeluargaModel keluarga = sidukDAO.selectKeluargaId(penduduk.getId_keluarga());
 		sidukDAO.addPenduduk(penduduk);
 		return "success-penduduk";
 	}
@@ -99,7 +98,7 @@ public class SidukController {
 		return "form-keluarga";
 	}
 
-	// halaman success add keluarga
+	// halaman success add keluarga tanpa generate nkk dan nambah data kelurahan
 	@RequestMapping(value="/keluarga/add/submit", method=RequestMethod.GET)
 	public String addKeluargaSubmit(Model model, @ModelAttribute KeluargaModel keluarga) {
 		//KeluargaModel keluarga = sidukDAO.selectKeluargaId(penduduk.getId_keluarga());
@@ -107,22 +106,6 @@ public class SidukController {
 		return "success-keluarga";
 	}
 	
-	// @RequestMapping("/keluarga/add/submit")
-	// public String addKeluargaSubmit(@RequestParam(value = "nomor_kk", required =
-	// false) String nomor_kk,
-	// @RequestParam(value = "alamat", required = false) String alamat,
-	// @RequestParam(value = "RT", required = false) String RT,
-	// @RequestParam(value = "RW", required = false) String RW,
-	// @RequestParam(value = "id_kelurahan", required = false) int id_kelurahan,
-	// @RequestParam(value = "is_tidak_berlaku", required = false) int
-	// is_tidak_berlaku) {
-	// KeluargaModel keluarga = new KeluargaModel(0, nomor_kk, alamat, RT, RW,
-	// id_kelurahan, is_tidak_berlaku);
-	// sidukDAO.addKeluarga(keluarga);
-	//
-	// return "success-keluarga";
-	// }
-
 	// halaman update penduduk
 	@RequestMapping("/penduduk/update/{nik}")
 	public String updatePenduduk(Model model, @PathVariable(value = "nik") String nik) {
@@ -138,7 +121,7 @@ public class SidukController {
 
 	// halaman success update penduduk, generate nik
 	@RequestMapping(value = "/penduduk/update/submit", method = RequestMethod.POST)
-	public String updateForm(@ModelAttribute PendudukModel penduduk) {
+	public String updateForm(Model model, @ModelAttribute PendudukModel penduduk) {
 		sidukDAO.updatePenduduk(penduduk);
 
 		return "success-update-penduduk";
