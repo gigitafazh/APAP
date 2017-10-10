@@ -1,0 +1,16 @@
+diff a/tugas_1/pom.xml b/tugas_1/pom.xml	(rejected hunks)
+@@ -29,12 +29,12 @@
+ 			<groupId>org.springframework.boot</groupId>
+ 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+ 		</dependency>
+-		
++
+ 		<dependency>
+ 			<groupId>org.springframework.boot</groupId>
+ 			<artifactId>spring-boot-starter-web</artifactId>
+ 		</dependency>
+-		
++
+ 		<dependency>
+ 			<groupId>org.projectlombok</groupId>
+ 			<artifactId>lombok</artifactId>
