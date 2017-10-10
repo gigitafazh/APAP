@@ -48,13 +48,30 @@ public class SidukServiceDatabase implements SidukService {
 		log.info("select kecamatan with id {}", id_kecamatan);
 		return sidukMapper.selectKecamatanById(id_kecamatan);
 	}
-	
+
 	// method select view penduduk get data keluarga, kelurahan, kecamatan, kota
-		@Override
-		public KotaModel selectKotaById(int id_kota) {
-			log.info("select kota with id {}", id_kota);
-			return sidukMapper.selectKotaById(id_kota);
-		}
+	@Override
+	public KotaModel selectKotaById(int id_kota) {
+		log.info("select kota with id {}", id_kota);
+		return sidukMapper.selectKotaById(id_kota);
+	}
+	
+	// method add penduduk
+	@Override
+	public void addPenduduk(PendudukModel penduduk) {
+		sidukMapper.addPenduduk(penduduk);
+	}
+
+	// method update penduduk
+	// @Override
+	// public void updatePenduduk(PendudukModel penduduk, int id) {
+	// log.info("update penduduk with id {}", id);
+	// sidukMapper.updatePenduduk(penduduk, id);
+	// }
+	public void updatePenduduk(PendudukModel penduduk) {
+		sidukMapper.updatePenduduk(penduduk);
+		System.out.println("sdafabdghmjhgbvcdfghgnb vcxdfg");
+	}
 
 	// keluarga service database
 	// method view keluarga
@@ -70,5 +87,10 @@ public class SidukServiceDatabase implements SidukService {
 		log.info("select penduduk with id_keluarga {}", id_keluarga);
 		return sidukMapper.selectPendudukById(id_keluarga);
 	}
-
+	
+	// method add keluarga
+	@Override
+	public void addKeluarga(KeluargaModel keluarga) {
+		sidukMapper.addKeluarga(keluarga);
+	}
 }

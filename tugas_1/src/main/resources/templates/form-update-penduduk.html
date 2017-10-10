@@ -1,20 +1,26 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=device-width" />
-	<title>Tugas 1 APAP</title>
-	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
-	<link rel="stylesheet" href="/webjars/font-awesome/css/font-awesome.min.css"></link>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
-	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
-	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width" />
+<title>Tugas 1 APAP</title>
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet"
+	href="/webjars/font-awesome/css/font-awesome.min.css"></link>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+<script type="text/javascript"
+	src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-
 
 <body>
 	<nav class="navbar navbar-inverse">
@@ -24,49 +30,153 @@
 			</div>
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="/">Home</a></li>
-				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Masukkan Data<span class="caret"></span></a>
-			        <ul class="dropdown-menu">
-			        	<li><a href="/penduduk/aad">Data Penduduk</a></li>
-			          	<li><a href="/keluarga/add">Data Keluarga</a></li>
-			        </ul>
-		      	</li>
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#">Masukkan Data<span
+						class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="/penduduk/add">Data Penduduk</a></li>
+						<li><a href="/keluarga/add">Data Keluarga</a></li>
+					</ul></li>
 			</ul>
 		</div>
 	</nav>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-1">
-			</div>
+			<div class="col-md-1"></div>
 			<div class="col-md-9">
-				<h3>Sistem Informasi Kependudukan Online Provinsi DKI Jakarta</h3>
-				<h5>Selamat datang di Sistem Informasi Kependudukan Online Provinsi DKI Jakarta</h5>
-				<hr/>
-				
-				<h4>Lihat Data Penduduk Berdasarkan NIK</h4>
-				<h6>Masukkan Nomor Induk Kependudukan</h6>
-				<form class="form-group" action="/penduduk/view" method="GET">
-					<div class="row">
-						<input class="form-control col-sm-4" style="margin-left:25px; width:60%" type="text" name="nik" required = "true"/>
-					</div>
-					<div>
-						<button class="btn-primary" style="margin-top:10px;  margin-left:10px" type="submit">Lihat</button>
-					</div>
-				</form>
-				<hr/>
-					
-				<h4>Lihat Data Keluarga Berdasarkan NKK</h4>
-				<h6>Masukkan Nomor Kartu Keluarga</h6>
-				<form class="form-group" action="/keluarga/view" method="GET">
-					<div class="row">
-						<input class="form-control col-sm-4" style="margin-left:25px; width:60%" type="text" name="nomor_kk" required = "true"/>
-					</div>
-					<div>
-						<button class="btn-primary" style="margin-top:10px; margin-left:10px" type="submit">Lihat</button>
-					</div>
+				<h3>Ubah Data Penduduk</h3>
+				<form class="form-group" action="/penduduk/update/submit"
+					method="POST" th:object="${penduduk}">
+					<table class="table-condensed" style="margin-top: 30px; width: 70%">
+						<tbody>
+							<tr>
+								<td class="col-sm-2"><label for="nik">NIK</label></td>
+								<td class="col-sm-4"><input class="form-control"
+									readonly="true" name="nik" th:value="${penduduk.nik}"
+									th:field="*{nik}" required="true"></input></td>
+							</tr>
+							<tr>
+								<td class="col-sm-2"><label for="nama">Nama</label></td>
+								<td class="col-sm-4"><input class="form-control"
+									type="text" name="nama" th:value="${penduduk.nama}"
+									th:field="*{nama}" required="true"></input></td>
+							</tr>
+							<tr>
+								<td class="col-sm-2"><label for="tempat_lahir">Tempat
+										Lahir</label></td>
+								<td class="col-sm-4"><input class="form-control"
+									type="text" name="tempat_lahir"
+									th:value="${penduduk.tempat_lahir}" th:field="*{tempat_lahir}"
+									required="true"></input></td>
+							</tr>
+							<tr>
+								<td class="col-sm-2"><label for="nama">Tanggal
+										Lahir</label></td>
+								<td class="col-sm-4"><input class="form-control"
+									type="date" name="tanggal_lahir"
+									th:value="${penduduk.tanggal_lahir}"
+									th:field="*{tanggal_lahir}" required="true"></input></td>
+							</tr>
+							<tr>
+								<td class="col-sm-2"><label for="jenis_kelamin">Jenis
+										Kelamin</label></td>
+								<td class="col-sm-4"><select class="form-control"
+									name="jenis_kelamin" th:value="*{jenis_kelamin}"
+									required="true">
+										<option th:value="0">Laki-laki</option>
+										<option th:value="1">Perempuan</option>
+								</select></td>
+							</tr>
+							<tr>
+								<td class="col-sm-2"><label for="golongan_darah">Golongan
+										Darah</label></td>
+								<td class="col-sm-4"><select class="form-control"
+									name="golongan_darah" th:value="*{golongan_darah}"
+									required="true">
+										<option selected="true" disabled="disabled"
+											th:value="${penduduk.golongan_darah}"
+											th:text="${penduduk.golongan_darah}"></option>
+										<option th:value="'A+'">A+</option>
+										<option th:value="'A-'">A-</option>
+										<option th:value="'B+'">B+</option>
+										<option th:value="'B-'">B-</option>
+										<option th:value="'O+'">O+</option>
+										<option th:value="'O-'">O-</option>
+										<option th:value="'AB+'">AB+</option>
+										<option th:value="'AB-'">AB-</option>
+								</select></td>
+							</tr>
+							<tr>
+								<td class="col-sm-2"><label for="status_perkawinan">Status
+										Perkawinan</label></td>
+								<td class="col-sm-4"><select class="form-control"
+									name="status_perkawinan" th:value="*{status_perkawinan}"
+									required="true">
+										<option selected="true" disabled="disabled"
+											th:text="${penduduk.status_perkawinan}"></option>
+										<option th:value="'Belum Kawin'">Belum Kawin</option>
+										<option th:value="'Kawin'">Kawin</option>
+								</select></td>
+							</tr>
+							<tr>
+								<td class="col-sm-2"><label for="agama">Agama</label></td>
+								<td class="col-sm-4"><input class="form-control"
+									type="text" name="agama" th:value="${penduduk.agama}"
+									th:field="*{agama}" required="true"></input></td>
+							</tr>
+							<tr>
+								<td class="col-sm-2"><label for="pekerjaan">Pekerjaan</label></td>
+								<td class="col-sm-4"><input class="form-control"
+									type="text" name="pekerjaan" th:value="${penduduk.pekerjaan}"
+									th:field="*{pekerjaan}" required="true"></input></td>
+							</tr>
+							<tr>
+								<td class="col-sm-2"><label for="status_kewarganegaraan">Status
+										Kewarganegaraan</label></td>
+								<td class="col-sm-4"><select class="form-control"
+									name="status_kewarganegaraan" th:value="*{is_wni}"
+									required="true">
+										<option selected="true" disabled="disabled"
+											th:text="${penduduk.is_wni} == true ? 'WNI' : 'WNA'"></option>
+										<option th:value="1">WNI</option>
+										<option th:value="0">WNA</option>
+								</select></td>
+							</tr>
+							<tr>
+								<td class="col-sm-2"><label for="id_keluarga">Id
+										Keluarga</label></td>
+								<td class="col-sm-4"><input class="form-control"
+									type="text" name="id_keluarga"
+									th:value="${penduduk.id_keluarga}" th:field="*{id_keluarga}"
+									required="true"></input></td>
+							</tr>
+							<tr>
+								<td class="col-sm-2"><label for="status_dalam_keluarga">Status
+										dalam Keluarga</label></td>
+								<td class="col-sm-4"><select class="form-control"
+									name="status_dalam_keluarga"
+									th:value="*{status_dalam_keluarga}" required="true">
+										<option selected="true" disabled="disabled"
+											th:text="${penduduk.status_dalam_keluarga}"></option>
+										<option value="'Kepala Keluarga'">Kepala Keluarga</option>
+										<option th:value="'Istri'">Istri</option>
+										<option th:value="'Anak'">Anak</option>
+								</select></td>
+							</tr>
+							<tr>
+								<td class="col-sm-2"></td>
+								<td class="col-sm-4">
+									<button class="btn btn-success" name="action" type="submit"
+										value="save">Update</button>
+									<a th:href="'/penduduk/view?nik=' + ${penduduk.nik}"
+									class="btn btn-danger"> Batal </a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
 				</form>
 			</div>
-			<div class="col-md-2">
-			</div>
+			<div class="col-md-2"></div>
 		</div>
 	</div>
 </body>

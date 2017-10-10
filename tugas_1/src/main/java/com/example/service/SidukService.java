@@ -24,11 +24,23 @@ public interface SidukService {
 
 	// select view penduduk get data di keluarga, kelurahan, kecamatan
 	KotaModel selectKotaById(int id_kota);
+	
+	// add penduduk
+	void addPenduduk(PendudukModel penduduk);
 
+	// update penduduk
+	//void updatePenduduk(PendudukModel penduduk, int id);
+	void updatePenduduk(PendudukModel penduduk);
+	
 	// keluarga service
 	// view keluarga
 	KeluargaModel selectKeluarga(String nomor_kk);
 
 	// select view anggota keluarga penduduk di keluarga
 	List<PendudukModel> selectPendudukById(int id_keluarga);
+	
+	// add keluarga
+	void addKeluarga(KeluargaModel keluarga);
+
+	
 }

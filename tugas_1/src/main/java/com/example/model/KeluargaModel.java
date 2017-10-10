@@ -15,8 +15,5 @@ public class KeluargaModel {
 	private String RT;
 	private String RW;
 	private int id_kelurahan;
-	private boolean is_tidakberlaku;
-	private String nama_kelurahan;
-	private String nama_kecamatan;
-	private String nama_kota;
+	private int is_tidak_berlaku;
 }
