@@ -3,17 +3,20 @@
 	xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=device-width" />
-	<title>Masukkan Data Keluarga</title>
-	<!-- <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width" />
+<title>Masukkan Data Keluarga</title>
+<!-- <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="/webjars/font-awesome/css/font-awesome.min.css"></link>
 	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
 	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script> -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 
@@ -41,39 +44,58 @@
 			<div class="col-md-1"></div>
 			<div class="col-md-9">
 				<h3>Masukkan Data Keluarga</h3>
-				<form action="/keluarga/add/submit" method="GET">
+				<form action="/keluarga/add/submit" method="GET"
+					th:object="${keluarga}">
 					<table>
 						<tbody>
-							<tr>
+							<!-- <tr>
 								<td class="col-sm-2"><label for="nomor_kk">NKK</label></td>
 								<td class="col-sm-4"><input class="form-control"
 									type="text" name="nomor_kk" /></td>
-							</tr>
+							</tr> -->
 							<tr>
 								<td class="col-sm-2"><label for="alamat">Alamat</label></td>
 								<td class="col-sm-4"><input class="form-control"
-									type="text" name="alamat" /></td>
+									type="text" name="alamat" th:field="*{alamat}" /></td>
 							</tr>
 							<tr>
 								<td class="col-sm-2"><label for="RT">RT</label></td>
 								<td class="col-sm-4"><input class="form-control"
-									type="text" name="RT" /></td>
+									type="text" name="RT" th:field="*{RT}"/></td>
 							</tr>
 							<tr>
 								<td class="col-sm-2"><label for="RW">RW</label></td>
 								<td class="col-sm-4"><input class="form-control"
-									type="text" name="RW" /></td>
+									type="text" name="RW" th:field="*{RW}"/></td>
 							</tr>
-							<tr>
+							<!-- <tr>
 								<td class="col-sm-2"><label for="id_kelurahan">ID
 										Kelurahan</label></td>
 								<td class="col-sm-4"><input class="form-control"
 									type="text" name="id_kelurahan" /></td>
+							</tr> -->
+							<tr>
+								<td class="col-sm-2"><label for="nama_kelurahan">Kelurahan/Desa</label></td>
+								<td class="col-sm-4"><input class="form-control"
+									type="text" name="nama_kelurahan" th:field="*{nama_kelurahan}"/></td>
 							</tr>
 							<tr>
-								<td class="col-sm-2"><label for="is_tidak_berlaku">Berlaku</label></td>
+								<td class="col-sm-2"><label for="nama_kecamatan">Kecamatan</label></td>
 								<td class="col-sm-4"><input class="form-control"
-									type="text" name="is_tidak_berlaku" /></td>
+									type="text" name="nama_kecamatan" th:field="*{nama_kecamatan}"/></td>
+							</tr>
+							<!-- <tr>
+								<td class="col-sm-2"><label for="kota">Kota</label></td>
+								<td class="col-sm-4"><input class="form-control"
+									type="text" name="kota" /></td>
+							</tr> -->
+							<tr>
+								<td class="col-sm-2"><label for="nama_kota">Kota</label></td>
+								<td class="col-sm-4"><select class="form-control"
+									name="nama_kota" th:value="*{kota.nama_kota}" required="true">
+										<option selected="true" disabled="disabled" value=""></option>
+										<option th:each="${kota.nama_kota}" th:value="${kota.nama_kota}" th:text="${kota.nama_kota}"></option>
+								</select></td>
 							</tr>
 							<tr>
 								<td class="col-sm-2"></td>

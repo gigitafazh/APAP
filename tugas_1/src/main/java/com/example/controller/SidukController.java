@@ -60,17 +60,17 @@ public class SidukController {
 	@RequestMapping("/keluarga/view")
 	public String viewKeluarga(Model model, @RequestParam(value = "nomor_kk") String nomor_kk) {
 		KeluargaModel keluarga = sidukDAO.selectKeluarga(nomor_kk);
-		List<PendudukModel> penduduk = sidukDAO.selectPendudukById(keluarga.getId());
 		KelurahanModel kelurahan = sidukDAO.selectKelurahanById(keluarga.getId_kelurahan());
 		KecamatanModel kecamatan = sidukDAO.selectKecamatanById(kelurahan.getId_kecamatan());
 		KotaModel kota = sidukDAO.selectKotaById(kecamatan.getId_kota());
+		List<PendudukModel> penduduk = sidukDAO.selectPendudukById(keluarga.getId());
 
 		if (keluarga != null) {
 			model.addAttribute("keluarga", keluarga);
-			model.addAttribute("penduduk", penduduk);
 			model.addAttribute("kelurahan", kelurahan);
 			model.addAttribute("kecamatan", kecamatan);
 			model.addAttribute("kota", kota);
+			model.addAttribute("penduduk", penduduk);
 			return "view-keluarga";
 		} else {
 			model.addAttribute("nomor_kk", nomor_kk);
@@ -85,8 +85,8 @@ public class SidukController {
 		return "form-penduduk";
 	}
 
-	//halaman success add penduduk tanpa generate nik
-	@RequestMapping(value="/penduduk/add/submit", method=RequestMethod.GET)
+	// halaman success add penduduk tanpa generate nik
+	@RequestMapping(value = "/penduduk/add/submit", method = RequestMethod.GET)
 	public String addPendudukSubmit(Model model, @ModelAttribute PendudukModel penduduk) {
 		sidukDAO.addPenduduk(penduduk);
 		return "success-penduduk";
@@ -99,16 +99,17 @@ public class SidukController {
 	}
 
 	// halaman success add keluarga tanpa generate nkk dan nambah data kelurahan
-	@RequestMapping(value="/keluarga/add/submit", method=RequestMethod.GET)
+	@RequestMapping(value = "/keluarga/add/submit", method = RequestMethod.GET)
 	public String addKeluargaSubmit(Model model, @ModelAttribute KeluargaModel keluarga) {
-		//KeluargaModel keluarga = sidukDAO.selectKeluargaId(penduduk.getId_keluarga());
+		// KeluargaModel keluarga =
+		// sidukDAO.selectKeluargaId(penduduk.getId_keluarga());
 		sidukDAO.addKeluarga(keluarga);
 		return "success-keluarga";
 	}
-	
+
 	// halaman update penduduk
 	@RequestMapping("/penduduk/update/{nik}")
-	public String updatePenduduk(Model model, @PathVariable(value = "nik") String nik) {
+	public String updatePendudukSubmit(Model model, @PathVariable(value = "nik") String nik) {
 		PendudukModel penduduk = sidukDAO.selectPenduduk(nik);
 		if (penduduk != null) {
 			model.addAttribute("penduduk", penduduk);
@@ -119,10 +120,26 @@ public class SidukController {
 		}
 	}
 
-	// halaman success update penduduk, generate nik
+	// halaman success update penduduk, tanpa generate nik
 	@RequestMapping(value = "/penduduk/update/submit", method = RequestMethod.POST)
 	public String updateForm(Model model, @ModelAttribute PendudukModel penduduk) {
+		String nik = penduduk.getNik();
+		PendudukModel pendudukUpdate = sidukDAO.selectPenduduk(nik);
+
+		if (penduduk.getJenis_kelamin() == null) {
+			penduduk.setJenis_kelamin(pendudukUpdate.getJenis_kelamin());
+		}
+		if (penduduk.getGolongan_darah() == null) {
+			penduduk.setGolongan_darah(pendudukUpdate.getGolongan_darah());
+		}
+		if (penduduk.getStatus_perkawinan() == null) {
+			penduduk.setStatus_perkawinan(pendudukUpdate.getStatus_perkawinan());
+		}
+		if (penduduk.getStatus_dalam_keluarga() == null) {
+			penduduk.setStatus_dalam_keluarga(pendudukUpdate.getStatus_dalam_keluarga());
+		}
 		sidukDAO.updatePenduduk(penduduk);
+		model.addAttribute("nik", pendudukUpdate.getNik());
 
 		return "success-update-penduduk";
 	}

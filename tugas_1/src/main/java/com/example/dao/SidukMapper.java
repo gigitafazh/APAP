@@ -47,23 +47,26 @@ public interface SidukMapper {
 	void addPenduduk(PendudukModel penduduk);
 
 	// update penduduk
-	// @Select("update penduduk set nik = #{nik}, nama = #{nama},"
-	// + "tempat_lahir = #{tempat_lahir},tanggal_lahir = #{tanggal_lahir},"
-	// + "jenis_kelamin = #{jenis_kelamin}, is_wni = #{is_wni},"
-	// + "id_keluarga = #{id_keluarga}, agama = #{agama}, pekerjaan = #{pekerjaan},"
-	// + "status_perkawinan = #{status_perkawinan}, status_dalam_keluarga =
-	// #{status_dalam_keluarga},"
-	// + "golongan_darah = #{golongan_darah} where nik = #{nik}")
-	// void updatePenduduk(@Param("penduduk") PendudukModel penduduk, @Param("id")
-	// int id);
-	@Update("update penduduk set nik = '${penduduk.nik}', nama = '${penduduk.nama}',"
-			+ "tempat_lahir = '${penduduk.tempat_lahir}', tanggal_lahir = '${penduduk.tanggal_lahir}',"
-			+ "jenis_kelamin = '${penduduk.jenis_kelamin}', is_wni = ${penduduk.is_wni},"
-			+ "id_keluarga = ${penduduk.id_keluarga}, agama = '${penduduk.agama}',"
-			+ "pekerjaan = '${penduduk.pekerjaan}', status_perkawinan = '${penduduk.status_perkawinan}',"
-			+ "status_dalam_keluarga = '${penduduk.status_dalam_keluarga}', golongan_darah = '${penduduk.golongan_darah}',"
-			+ "is_wafat = ${is_wafat}  where nik = #{nik}")
+	@Select("update penduduk set nik = #{nik}, nama = #{nama}, tempat_lahir = #{tempat_lahir},"
+			+ "tanggal_lahir = #{tanggal_lahir}, jenis_kelamin = #{jenis_kelamin}, is_wni = #{is_wni},"
+			+ "id_keluarga = #{id_keluarga}, agama = #{agama}, pekerjaan = #{pekerjaan},"
+			+ "status_perkawinan = #{status_perkawinan}, status_dalam_keluarga =#{status_dalam_keluarga},"
+			+ "golongan_darah = #{golongan_darah}, is_wafat = #{is_wafat} where nik = #{nik}")
+	//void updatePenduduk(@Param("penduduk") PendudukModel penduduk, @Param("id") int id);
 	void updatePenduduk(PendudukModel penduduk);
+	
+	// @Update("update penduduk set nik = '${penduduk.nik}', nama =
+	// '${penduduk.nama}',"
+	// + "tempat_lahir = '${penduduk.tempat_lahir}', tanggal_lahir =
+	// '${penduduk.tanggal_lahir}',"
+	// + "jenis_kelamin = '${penduduk.jenis_kelamin}', is_wni = ${penduduk.is_wni},"
+	// + "id_keluarga = ${penduduk.id_keluarga}, agama = '${penduduk.agama}',"
+	// + "pekerjaan = '${penduduk.pekerjaan}', status_perkawinan =
+	// '${penduduk.status_perkawinan}',"
+	// + "status_dalam_keluarga = '${penduduk.status_dalam_keluarga}',
+	// golongan_darah = '${penduduk.golongan_darah}',"
+	// + "is_wafat = ${is_wafat} where nik = #{nik}")
+	// void updatePenduduk(PendudukModel penduduk);
 
 	// Mapper Keluarga
 	// select view keluarga

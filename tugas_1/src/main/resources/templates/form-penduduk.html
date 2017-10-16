@@ -3,17 +3,20 @@
 	xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=device-width" />
-	<title>Masukkan Data Penduduk</title>
-	<!-- <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width" />
+<title>Masukkan Data Penduduk</title>
+<!-- <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="/webjars/font-awesome/css/font-awesome.min.css"></link>
 	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
 	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script> -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 
@@ -124,7 +127,7 @@
 								<td class="col-md-4"><select class="form-control"
 									name="status_kewarganegaraan" th:value="*{is_wni}"
 									required="true">
-										<option selected="true" disabled="disabled" value="''"></option>
+										<option selected="true" disabled="disabled" value=""></option>
 										<option th:value="1">WNI</option>
 										<option th:value="0">WNA</option>
 								</select></td>
@@ -150,7 +153,7 @@
 								<td class="col-md-2"><label for="status_dalam_keluarga">Status
 										dalam Keluarga</label></td>
 								<td class="col-md-4"><select class="form-control"
-									name="status_dalam_keluarga" id="sel1"
+									name="status_dalam_keluarga"
 									th:value="*{status_dalam_keluarga}" required="true">
 										<option selected="true" disabled="disabled" value="''"></option>
 										<option th:value="'Kepala Keluarga'">Kepala Keluarga</option>
@@ -160,7 +163,8 @@
 							</tr>
 							<tr>
 								<td class="col-md-2"></td>
-								<td class="col-md-4"><button class="btn btn-success" type="submit" name="action" value="save">Save</button></td>
+								<td class="col-md-4"><button class="btn btn-success"
+										type="submit" name="action" value="save">Save</button></td>
 							</tr>
 						</tbody>
 					</table>

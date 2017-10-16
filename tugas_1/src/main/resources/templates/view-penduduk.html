@@ -87,7 +87,7 @@
 						<tr>
 							<td class="col-md-2">Jenis Kelamin</td>
 							<td class="col-md-4"
-								th:text="${penduduk.jenis_kelamin} == false ? 'Laki-laki' : 'Perempuan'">Penduduk
+								th:text="${penduduk.jenis_kelamin} == 0 ? 'Laki-laki' : 'Perempuan'">Penduduk
 								Jenis Kelamin</td>
 						</tr>
 						<tr>
@@ -113,13 +113,13 @@
 						<tr>
 							<td class="col-md-2">Kewarganegaraan</td>
 							<td class="col-md-4"
-								th:text="${penduduk.is_wni} == true ? 'WNI' : 'WNA'">Penduduk
+								th:text="${penduduk.is_wni} == 1 ? 'WNI' : 'WNA'">Penduduk
 								Kewarganegaraan</td>
 						</tr>
 						<tr>
 							<td class="col-md-2">Status Kematian</td>
 							<td class="col-md-4"
-								th:text="${penduduk.is_wafat} == false ? 'Hidup' : 'Wafat'">Penduduk
+								th:text="${penduduk.is_wafat} == 0 ? 'Hidup' : 'Wafat'">Penduduk
 								Status Kematian</td>
 						</tr>
 

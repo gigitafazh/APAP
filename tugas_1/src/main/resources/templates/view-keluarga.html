@@ -3,17 +3,20 @@
 	xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=device-width" />
-	<title>Lihat Data Keluarga</title>
-	<!-- <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width" />
+<title>Lihat Data Keluarga</title>
+<!-- <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="/webjars/font-awesome/css/font-awesome.min.css"></link>
 	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
 	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script> -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 
@@ -77,8 +80,9 @@
 					</tbody>
 				</table>
 
-				<table class="table table-bordered" style="margin-top: 30px">
-					<thead>
+				<table class="table table-bordered"
+					style="margin-top: 30px; text-align:center; width:100%">
+					<thead style="margin-top:30px; width:100%">
 						<tr>
 							<td>No</td>
 							<td>Nama</td>
@@ -93,9 +97,9 @@
 							<td>Kewarganegaraan</td>
 						</tr>
 					</thead>
-					<tbody>
-						<tr th:each="penduduk,iterationStatus: ${penduduk}">
-							<td th:text="${iterationStatus.count}">No. 1</td>
+					<tbody style="margin-top:30px; width: 100%">
+						<tr th:each="penduduk,iterationStatus:${penduduk}">
+							<td th:text="${iterationStatus.count}">1</td>
 							<td th:text="${penduduk.nama}">Nama</td>
 							<td th:text="${penduduk.nik}">NIK</td>
 							<td
@@ -113,6 +117,10 @@
 						</tr>
 					</tbody>
 				</table>
+				<div>
+					<a th:href="'/keluarga/update/' + ${keluarga.nomor_kk}"
+						class="btn btn-primary"> Update Data </a>
+				</div>
 			</div>
 			<div class="col-md-2"></div>
 		</div>

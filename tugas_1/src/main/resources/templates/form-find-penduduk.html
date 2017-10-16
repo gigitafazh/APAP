@@ -1,6 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
 	<meta charset="utf-8" />
@@ -38,41 +37,68 @@
 	</nav>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-1">
-			</div>
-			<div class="col-md-9">
+			<div class="col-md-1"></div>
+			<div th:if="${view} == null" class="col-md-9">
 				<h3>Sistem Informasi Kependudukan Online Provinsi DKI Jakarta</h3>
-				<h5>Selamat datang di Sistem Informasi Kependudukan Online Provinsi DKI Jakarta</h5>
-				<hr/>
+				<h5>Selamat datang di Sistem Informasi Kependudukan Online
+					Provinsi DKI Jakarta</h5>
+				<hr />
+
+				<h3>Cari Penduduk</h3>
+				<form class="form-group" action="/penduduk/find" method="GET" style="width:60%">
+					<div th:if="${view} == null" class="row" style="margin-left:5px">
+						<h4 for="kode_kota" >Lihat data penduduk berdasarkan kota</h4>
+						<select class="form-control" name="kota" required ="true" >
+							<option th:if="${nama_kota} != null" readonly="true" th:value="${nama_kota}" th:text="${nama_kota}"></option> 
+							<option th:if="${nama_kota} == null" selected="true" disabled="disabled"></option> 
+					        <option th:if="${nama_kota} == null" th:each="kota,iterationStatus:${kota_list}" th:value="${kota.nama_kota}" th:text="${kota.nama_kota}">Kota</option>
+					    </select>
+					</div>
+					<div th:if="${nama_kota} != null" class="row" style="margin-left:5px">
+						<h4 for="kode_kecamatan" >Lihat data penduduk berdasarkan kecamatan</h4>
+						<select class="form-control" name="kecamatan">
+							<option th:if="${nama_kecamatan} != null" th:value="${nama_kecamatan}" readonly="true" th:text="${nama_kecamatan}"></option> 
+							<option th:if="${nama_kecamatan} == null" selected="true" disabled="disabled"></option> 
+					        <option th:if="${nama_kecamatan} == null" th:each="kecamatan,iterationStatus:${kecamatan_list}" th:value="${kecamatan.nama_kecamatan}" th:text="${kecamatan.nama_kecamatan}">Kecamatan</option>
+					    </select>
+					</div>
+					<div th:if="${nama_kecamatan} != null" class="row" style="margin-left:5px">
+						<h4 for="kode_kecamatan" >Lihat data penduduk berdasarkan kelurahan</h4>
+						<select class="form-control" name="kelurahan">
+							<option th:if="${nama_kelurahan} != null" th:value="${nama_kelurahan}" readonly="true" th:text="${nama_kelurahan}"></option> 
+							<option th:if="${nama_kelurahan} == null" selected="true" disabled="disabled"></option>
+					        <option th:if="${nama_kelurahan} == null" th:each="kelurahan,iterationStatus: ${kelurahan_list}" th:value="${kelurahan.nama_kelurahan}" th:text="${kelurahan.nama_kelurahan}">Kelurahan</option>
+					    </select>
+					</div>
+					<div>
+						<button class="btn btn-primary" style="margin-top:10px; margin-left:5px" type="submit">Lihat</button>
+					</div>
+				</form>
 				
-				<h4>Lihat Data Penduduk Berdasarkan Kota</h4>
-				<form class="form-group" action="/penduduk/view" method="GET">
-					<div class="row">
-						<select class="form-control" name="kt" required = "true" >
-						<option th:if="${nama_kota} != null" readonly = "readonly" th:value="${nama_kota}" th:text="${nama_kota}"></option> 
-						<option th:if="${nama_kota} == null" selected="true" disabled="disabled"></option> 
-				        <option th:if="${nama_kota} == null" th:each="kota,iterationStatus: ${kota_list}" th:value="${kota.nama_kota}" th:text="${kota.nama_kota}">Kota</option>
-				    </select>
-					</div>
-					<div>
-						<button class="btn-primary" style="margin-top:10px;  margin-left:10px" type="submit">Lihat</button>
-					</div>
-				</form>
-				<hr/>
-					
-				<h4>Lihat Data Keluarga Berdasarkan NKK</h4>
-				<h6>Masukkan Nomor Kartu Keluarga</h6>
-				<form class="form-group" action="/keluarga/view" method="GET">
-					<div class="row">
-						<input class="form-control col-sm-4" style="margin-left:25px; width:60%" type="text" name="nomor_kk" required = "true"/>
-					</div>
-					<div>
-						<button class="btn-primary" style="margin-top:10px; margin-left:10px" type="submit">Lihat</button>
-					</div>
-				</form>
-			</div>
-			<div class="col-md-2">
-			</div>
+				<div th:if="${view} != null" class="row" style="margin-top:30px; margin-left:5px">
+					<h4 th:text="'Lihat data penduduk di Kota ' + ${nama_kota} +  ' Kecamatan ' + ${nama_kecamatan} + ' Kelurahan ' + ${nama_kelurahan}"></h4>
+					<table id="result" class="table table-bordered" style="width:100%; text-align:center">
+						<thead>
+							<tr>
+								<td style="width:5%">No</td>
+								<td>Nama</td>
+								<td>NIK</td>
+								<td>Jenis Kelamin</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="penduduk,iterationStatus:${penduduk_list}">
+								<td style="width:5%" th:text="${iterationStatus.count}"> 1 </td>
+								<td th:text="${penduduk.nama}"></td>
+								<td th:text="${penduduk.nik}"></td>
+								<td th:text="${penduduk.jenis_kelamin} == 0 ? 'Laki-laki' : 'Perempuan'"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>		
+			</div>		
+			
+			<div class="col-md-2"></div>
 		</div>
 	</div>
 </body>

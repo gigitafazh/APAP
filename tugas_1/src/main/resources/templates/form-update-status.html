@@ -1,11 +1,12 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 
 <head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width" />
-	<title>Welcome! SI Kependudukan</title>
+	<title>Ubah Status Kematian</title>
 	<!-- <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="/webjars/font-awesome/css/font-awesome.min.css"></link>
 	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
@@ -37,43 +38,38 @@
 	</nav>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-1"></div>
+			<div class="col-md-1">
+			</div>
 			<div class="col-md-9">
 				<h3>Sistem Informasi Kependudukan Online Provinsi DKI Jakarta</h3>
-				<h5>Selamat datang di Sistem Informasi Kependudukan Online
-					Provinsi DKI Jakarta</h5>
-				<hr />
-
+				<h5>Selamat datang di Sistem Informasi Kependudukan Online Provinsi DKI Jakarta</h5>
+				<hr/>
+				
 				<h4>Lihat Data Penduduk Berdasarkan NIK</h4>
 				<h6>Masukkan Nomor Induk Kependudukan</h6>
 				<form class="form-group" action="/penduduk/view" method="GET">
 					<div class="row">
-						<input class="form-control col-sm-4"
-							style="margin-left: 25px; width: 60%" type="text" name="nik"
-							required="true" />
+						<input class="form-control col-sm-4" style="margin-left:25px; width:60%" type="text" name="nik" required = "true"/>
 					</div>
 					<div>
-						<button class="btn btn-primary"
-							style="margin-top: 10px; margin-left: 10px" type="submit">Lihat</button>
+						<button class="btn-primary" style="margin-top:10px;  margin-left:10px" type="submit">Lihat</button>
 					</div>
 				</form>
-				<hr />
-
+				<hr/>
+					
 				<h4>Lihat Data Keluarga Berdasarkan NKK</h4>
 				<h6>Masukkan Nomor Kartu Keluarga</h6>
 				<form class="form-group" action="/keluarga/view" method="GET">
 					<div class="row">
-						<input class="form-control col-sm-4"
-							style="margin-left: 25px; width: 60%" type="text" name="nomor_kk"
-							required="true" />
+						<input class="form-control col-sm-4" style="margin-left:25px; width:60%" type="text" name="nomor_kk" required = "true"/>
 					</div>
 					<div>
-						<button class="btn btn-primary"
-							style="margin-top: 10px; margin-left: 10px" type="submit">Lihat</button>
+						<button class="btn-primary" style="margin-top:10px; margin-left:10px" type="submit">Lihat</button>
 					</div>
 				</form>
 			</div>
-			<div class="col-md-2"></div>
+			<div class="col-md-2">
+			</div>
 		</div>
 	</div>
 </body>
