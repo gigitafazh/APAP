@@ -41,6 +41,9 @@ public interface SidukService {
 	
 	// add keluarga
 	void addKeluarga(KeluargaModel keluarga);
+	
+	// update keluarga
+	void updateKeluarga(KeluargaModel keluarga);
 
 	
 }

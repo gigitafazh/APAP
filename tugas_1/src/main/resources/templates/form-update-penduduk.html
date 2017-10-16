@@ -69,7 +69,7 @@
 									required="true"></input></td>
 							</tr>
 							<tr>
-								<td class="col-sm-2"><label for="nama">Tanggal
+								<td class="col-sm-2"><label for="tanggal_lahir">Tanggal
 										Lahir</label></td>
 								<td class="col-sm-4"><input class="form-control"
 									type="date" name="tanggal_lahir"
@@ -82,7 +82,7 @@
 								<td class="col-sm-4"><select class="form-control"
 									name="jenis_kelamin" th:value="*{jenis_kelamin}"
 									required="true">
-										<option selected="selected" disabled="disabled"
+										<option selected="true" disabled="disabled"
 											th:value="${penduduk.jenis_kelamin}"
 											th:text="${penduduk.jenis_kelamin} == 0 ? 'Laki-laki' : 'Perempuan'"></option>
 										<option th:value="0">Laki-laki</option>
@@ -95,7 +95,7 @@
 								<td class="col-sm-4"><select class="form-control"
 									name="golongan_darah" th:value="*{golongan_darah}"
 									required="true">
-										<option selected="selected" disabled="disabled"
+										<option selected="true" disabled="disabled"
 											th:value="${penduduk.golongan_darah}"
 											th:text="${penduduk.golongan_darah}"></option>
 										<option th:value="'A+'">A+</option>
@@ -114,7 +114,7 @@
 								<td class="col-sm-4"><select class="form-control"
 									name="status_perkawinan" th:value="*{status_perkawinan}"
 									required="true">
-										<option selected="selected" disabled="disabled"
+										<option selected="true" disabled="disabled"
 											th:value="${penduduk.status_perkawinan}"
 											th:text="${penduduk.status_perkawinan}"></option>
 										<option th:value="'Belum Kawin'">Belum Kawin</option>
@@ -139,7 +139,7 @@
 								<td class="col-sm-4"><select class="form-control"
 									name="status_kewarganegaraan" th:value="*{is_wni}"
 									required="true">
-										<option selected="selected" disabled="disabled"
+										<option selected="true" disabled="disabled"
 											th:value="${penduduk.is_wni}"
 											th:text="${penduduk.is_wni} == 1 ? 'WNI' : 'WNA'"></option>
 										<option th:value="1">WNI</option>
@@ -160,7 +160,7 @@
 								<td class="col-sm-4"><select class="form-control"
 									name="status_dalam_keluarga"
 									th:value="*{status_dalam_keluarga}" required="true">
-										<option selected="selected" disabled="disabled"
+										<option selected="true" disabled="disabled"
 											th:value="${penduduk.status_dalam_keluarga}"
 											th:text="${penduduk.status_dalam_keluarga}"></option>
 										<option th:value="'Kepala Keluarga'">Kepala Keluarga</option>

@@ -47,12 +47,11 @@ public interface SidukMapper {
 	void addPenduduk(PendudukModel penduduk);
 
 	// update penduduk
-	@Select("update penduduk set nik = #{nik}, nama = #{nama}, tempat_lahir = #{tempat_lahir},"
+	@Update("update penduduk set nik = #{nik}, nama = #{nama}, tempat_lahir = #{tempat_lahir},"
 			+ "tanggal_lahir = #{tanggal_lahir}, jenis_kelamin = #{jenis_kelamin}, is_wni = #{is_wni},"
 			+ "id_keluarga = #{id_keluarga}, agama = #{agama}, pekerjaan = #{pekerjaan},"
 			+ "status_perkawinan = #{status_perkawinan}, status_dalam_keluarga =#{status_dalam_keluarga},"
 			+ "golongan_darah = #{golongan_darah}, is_wafat = #{is_wafat} where nik = #{nik}")
-	//void updatePenduduk(@Param("penduduk") PendudukModel penduduk, @Param("id") int id);
 	void updatePenduduk(PendudukModel penduduk);
 	
 	// @Update("update penduduk set nik = '${penduduk.nik}', nama =
@@ -66,7 +65,7 @@ public interface SidukMapper {
 	// + "status_dalam_keluarga = '${penduduk.status_dalam_keluarga}',
 	// golongan_darah = '${penduduk.golongan_darah}',"
 	// + "is_wafat = ${is_wafat} where nik = #{nik}")
-	// void updatePenduduk(PendudukModel penduduk);
+	//void updatePenduduk(@Param("penduduk") PendudukModel penduduk, @Param("id") int id);
 
 	// Mapper Keluarga
 	// select view keluarga
@@ -81,4 +80,10 @@ public interface SidukMapper {
 	@Insert("insert into keluarga (nomor_kk, alamat, RT, RW, id_kelurahan, is_tidak_berlaku) values"
 			+ "('${nomor_kk}', '${alamat}', '${RT}', '${RW}', ${id_kelurahan}, ${is_tidak_berlaku})")
 	void addKeluarga(KeluargaModel keluarga);
+	
+	// update keluarga
+	@Update("update penduduk set nomor_kk = #{nomor_kk}, alamat = #{alamat},"
+			+ "RT = #{RT}, RW = #{RW}, id_kelurahan = #{id_kelurahan},"
+			+ "is_tidak_berlaku = #{is_tidak_berlaku} where nomor_kk = #{nomor_kk}")
+	void updateKeluarga(KeluargaModel keluarga);
 }

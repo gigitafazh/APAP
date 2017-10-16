@@ -3,17 +3,20 @@
 	xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=device-width" />
-	<title>Ubah Data Keluarga</title>
-	<!-- <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width" />
+<title>Ubah Data Keluarga</title>
+<!-- <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="/webjars/font-awesome/css/font-awesome.min.css"></link>
 	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
 	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script> -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 
@@ -38,38 +41,60 @@
 	</nav>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-1">
-			</div>
+			<div class="col-md-1"></div>
 			<div class="col-md-9">
-				<h3>Sistem Informasi Kependudukan Online Provinsi DKI Jakarta</h3>
-				<h5>Selamat datang di Sistem Informasi Kependudukan Online Provinsi DKI Jakarta</h5>
-				<hr/>
-				
-				<h4>Lihat Data Penduduk Berdasarkan NIK</h4>
-				<h6>Masukkan Nomor Induk Kependudukan</h6>
-				<form class="form-group" action="/penduduk/view" method="GET">
-					<div class="row">
-						<input class="form-control col-sm-4" style="margin-left:25px; width:60%" type="text" name="nik" required = "true"/>
-					</div>
-					<div>
-						<button class="btn-primary" style="margin-top:10px;  margin-left:10px" type="submit">Lihat</button>
-					</div>
-				</form>
-				<hr/>
-					
-				<h4>Lihat Data Keluarga Berdasarkan NKK</h4>
-				<h6>Masukkan Nomor Kartu Keluarga</h6>
-				<form class="form-group" action="/keluarga/view" method="GET">
-					<div class="row">
-						<input class="form-control col-sm-4" style="margin-left:25px; width:60%" type="text" name="nomor_kk" required = "true"/>
-					</div>
-					<div>
-						<button class="btn-primary" style="margin-top:10px; margin-left:10px" type="submit">Lihat</button>
-					</div>
+				<h3>Ubah Data Keluarga</h3>
+				<form class="form-group" action="/keluarga/update/submit"
+					method="POST" th:object="${penduduk}">
+					<table class="table-condensed" style="margin-top: 30px; width: 70%">
+						<tbody>
+							<tr>
+								<td class="col-sm-2"><label for="nomor_kk">NKK</label></td>
+								<td class="col-sm-4"><input class="form-control"
+									readonly="true" name="nomor_kk" th:value="${keluarga.nomor_kk}"
+									th:field="*{nomor_kk}" required="true"></input></td>
+							</tr>
+							<tr>
+								<td class="col-sm-2"><label for="alamat">Alamat</label></td>
+								<td class="col-sm-4"><input class="form-control"
+									type="text" name="alamat" th:value="${keluarga.alamat}"
+									th:field="*{alamat}" required="true"></input></td>
+							</tr>
+							<tr>
+								<td class="col-sm-2"><label for="RT">RT</label></td>
+								<td class="col-sm-4"><input class="form-control"
+									type="text" name="RT"
+									th:value="${keluarga.RT}" th:field="*{RT}"
+									required="true"></input></td>
+							</tr>
+							<tr>
+								<td class="col-sm-2"><label for="RW">RW</label></td>
+								<td class="col-sm-4"><input class="form-control"
+									type="text" name="RW"
+									th:value="${keluarga.RW}"
+									th:field="*{RW}" required="true"></input></td>
+							</tr>
+							<tr>
+								<td class="col-sm-2"><label for="id_kelurahan">Id Kelurahan</label></td>
+								<td class="col-sm-4"><input class="form-control"
+									type="text" name="id_kelurahan"
+									th:value="${keluarga.id_kelurahan}"
+									th:field="*{id_kelurahan}" required="true"></input></td>
+							</tr>
+							<tr>
+								<td class="col-sm-2"></td>
+								<td class="col-sm-4">
+									<button class="btn btn-success" name="action" type="submit"
+										value="save">Update</button> <a
+									th:href="'/keluarga/view?nomor_kk=' + ${keluarga.nomor_kk}"
+									class="btn btn-danger"> Batal </a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
 				</form>
 			</div>
-			<div class="col-md-2">
-			</div>
+			<div class="col-md-2"></div>
 		</div>
 	</div>
 </body>

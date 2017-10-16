@@ -92,4 +92,10 @@ public class SidukServiceDatabase implements SidukService {
 	public void addKeluarga(KeluargaModel keluarga) {
 		sidukMapper.addKeluarga(keluarga);
 	}
+	
+	// method update keluarga
+	@Override
+	public void updateKeluarga(KeluargaModel keluarga) {
+		sidukMapper.updateKeluarga(keluarga);
+	}
 }

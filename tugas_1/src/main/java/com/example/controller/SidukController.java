@@ -52,7 +52,7 @@ public class SidukController {
 			return "view-penduduk";
 		} else {
 			model.addAttribute("nik", nik);
-			return "not-found";
+			return "not-found-penduduk";
 		}
 	}
 
@@ -74,7 +74,7 @@ public class SidukController {
 			return "view-keluarga";
 		} else {
 			model.addAttribute("nomor_kk", nomor_kk);
-			return "not-found";
+			return "not-found-keluarga";
 		}
 	}
 
@@ -92,24 +92,43 @@ public class SidukController {
 		return "success-penduduk";
 	}
 
+	// halaman success add penduduk generate nik
+	@RequestMapping(value = "/penduduk/add/submit", method = RequestMethod.GET)
+	public String addPenduduk(Model model, @ModelAttribute PendudukModel penduduk) {
+		KeluargaModel keluarga = sidukDAO.selectKeluargaById(penduduk.getId_keluarga());
+		
+		if (keluarga != null) {
+			KelurahanModel kelurahan = sidukDAO.selectKelurahanById(keluarga.getId_kelurahan());
+		}
+		
+		sidukDAO.addPenduduk(penduduk);
+		return "success-penduduk";
+	}
+
 	// halaman add keluarga
 	@RequestMapping("/keluarga/add")
 	public String add() {
 		return "form-keluarga";
 	}
 
-	// halaman success add keluarga tanpa generate nkk dan nambah data kelurahan
+	// halaman success add keluarga tanpa generate nkk
+	// dan tanpa nambah data ke kelurahan
 	@RequestMapping(value = "/keluarga/add/submit", method = RequestMethod.GET)
 	public String addKeluargaSubmit(Model model, @ModelAttribute KeluargaModel keluarga) {
-		// KeluargaModel keluarga =
-		// sidukDAO.selectKeluargaId(penduduk.getId_keluarga());
+		sidukDAO.addKeluarga(keluarga);
+		return "success-keluarga";
+	}
+
+	// halaman success add keluarga generate nkk
+	@RequestMapping(value = "/keluarga/add/submit", method = RequestMethod.GET)
+	public String addKeluarga(Model model, @ModelAttribute KeluargaModel keluarga) {
 		sidukDAO.addKeluarga(keluarga);
 		return "success-keluarga";
 	}
 
 	// halaman update penduduk
 	@RequestMapping("/penduduk/update/{nik}")
-	public String updatePendudukSubmit(Model model, @PathVariable(value = "nik") String nik) {
+	public String updatePenduduk(Model model, @PathVariable(value = "nik") String nik) {
 		PendudukModel penduduk = sidukDAO.selectPenduduk(nik);
 		if (penduduk != null) {
 			model.addAttribute("penduduk", penduduk);
@@ -142,6 +161,31 @@ public class SidukController {
 		model.addAttribute("nik", pendudukUpdate.getNik());
 
 		return "success-update-penduduk";
+	}
+
+	// halaman update keluarga
+	@RequestMapping("/keluarga/update/{nomor_kk}")
+	public String updateKeluarga(Model model, @PathVariable(value = "nomor_kk") String nomor_kk) {
+		KeluargaModel keluarga = sidukDAO.selectKeluarga(nomor_kk);
+		if (keluarga != null) {
+			model.addAttribute("keluarga", keluarga);
+			return "form-update-penduduk";
+		} else {
+			model.addAttribute("nomor_kk", nomor_kk);
+			return "not-found";
+		}
+	}
+
+	// halaman success update keluarga, tanpa generate nkk
+	@RequestMapping(value = "/keluarga/update/submit", method = RequestMethod.POST)
+	public String updateForm(Model model, @ModelAttribute KeluargaModel keluarga) {
+		String nomor_kk = keluarga.getNomor_kk();
+		KeluargaModel keluargaUpdate = sidukDAO.selectKeluarga(nomor_kk);
+
+		sidukDAO.updateKeluarga(keluarga);
+		model.addAttribute("nomor_kk", keluargaUpdate.getNomor_kk());
+
+		return "success-update-keluarga";
 	}
 
 	// halaman update status kematian
