@@ -93,17 +93,20 @@ public class SidukController {
 	}
 
 	// halaman success add penduduk generate nik
-	@RequestMapping(value = "/penduduk/add/submit", method = RequestMethod.GET)
-	public String addPenduduk(Model model, @ModelAttribute PendudukModel penduduk) {
-		KeluargaModel keluarga = sidukDAO.selectKeluargaById(penduduk.getId_keluarga());
-		
-		if (keluarga != null) {
-			KelurahanModel kelurahan = sidukDAO.selectKelurahanById(keluarga.getId_kelurahan());
-		}
-		
-		sidukDAO.addPenduduk(penduduk);
-		return "success-penduduk";
-	}
+	// @RequestMapping(value = "/penduduk/add/submit", method = RequestMethod.GET)
+	// public String addPenduduk(Model model, @ModelAttribute PendudukModel
+	// penduduk) {
+	// KeluargaModel keluarga =
+	// sidukDAO.selectKeluargaById(penduduk.getId_keluarga());
+	//
+	// if (keluarga != null) {
+	// KelurahanModel kelurahan =
+	// sidukDAO.selectKelurahanById(keluarga.getId_kelurahan());
+	// }
+	//
+	// sidukDAO.addPenduduk(penduduk);
+	// return "success-penduduk";
+	// }
 
 	// halaman add keluarga
 	@RequestMapping("/keluarga/add")
@@ -120,11 +123,12 @@ public class SidukController {
 	}
 
 	// halaman success add keluarga generate nkk
-	@RequestMapping(value = "/keluarga/add/submit", method = RequestMethod.GET)
-	public String addKeluarga(Model model, @ModelAttribute KeluargaModel keluarga) {
-		sidukDAO.addKeluarga(keluarga);
-		return "success-keluarga";
-	}
+	// @RequestMapping(value = "/keluarga/add/submit", method = RequestMethod.GET)
+	// public String addKeluarga(Model model, @ModelAttribute KeluargaModel
+	// keluarga) {
+	// sidukDAO.addKeluarga(keluarga);
+	// return "success-keluarga";
+	// }
 
 	// halaman update penduduk
 	@RequestMapping("/penduduk/update/{nik}")
@@ -169,7 +173,7 @@ public class SidukController {
 		KeluargaModel keluarga = sidukDAO.selectKeluarga(nomor_kk);
 		if (keluarga != null) {
 			model.addAttribute("keluarga", keluarga);
-			return "form-update-penduduk";
+			return "form-update-keluarga";
 		} else {
 			model.addAttribute("nomor_kk", nomor_kk);
 			return "not-found";

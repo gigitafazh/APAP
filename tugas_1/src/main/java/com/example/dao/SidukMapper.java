@@ -82,7 +82,7 @@ public interface SidukMapper {
 	void addKeluarga(KeluargaModel keluarga);
 	
 	// update keluarga
-	@Update("update penduduk set nomor_kk = #{nomor_kk}, alamat = #{alamat},"
+	@Update("update keluarga set nomor_kk = #{nomor_kk}, alamat = #{alamat},"
 			+ "RT = #{RT}, RW = #{RW}, id_kelurahan = #{id_kelurahan},"
 			+ "is_tidak_berlaku = #{is_tidak_berlaku} where nomor_kk = #{nomor_kk}")
 	void updateKeluarga(KeluargaModel keluarga);
