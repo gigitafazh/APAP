@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Lihat Kurikulum</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!-- <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script> -->
+	
+	<style>
+		* {box-sizing: border-box}
+		body {font-family: "Lato", sans-serif;}
+		
+		/* Style the tab */
+		div.tab {
+		    float: left;
+		    border: 1px solid #ccc;
+		    background-color: #f1f1f1;
+		    width: 30%;
+		    height: 300px;
+		}
+		
+		/* Style the buttons inside the tab */
+		div.tab button {
+		    display: block;
+		    background-color: inherit;
+		    color: black;
+		    padding: 22px 16px;
+		    width: 100%;
+		    border: none;
+		    outline: none;
+		    text-align: left;
+		    cursor: pointer;
+		    transition: 0.3s;
+		    font-size: 17px;
+		}
+		
+		/* Change background color of buttons on hover */
+		div.tab button:hover {
+		    background-color: #ddd;
+		}
+		
+		/* Create an active/current "tab button" class */
+		div.tab button.active {
+		    background-color: #ccc;
+		}
+		
+		/* Style the tab content */
+		.tabcontent {
+		    float: left;
+		    padding: 0px 12px;
+		    border: 1px solid #ccc;
+		    width: 70%;
+		    border-left: none;
+		    height: 300px;
+		}
+	</style>
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/">SI Kurikulum</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="/">Beranda</a></li>
+				<li><a href="/kurikulum">Kurikulum</a></li>
+				<li><a href="/mata-kuliah">Mata Kuliah</a>
+				<li><a href="/angkatan">Angkatan</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+		      <li><a href="#">Admin 1  <i class="fa fa-user-circle"></i></a></li>
+		      <li>
+				<form class="navbar-form" role="search">
+			      	<div class="input-group">
+			          	<input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+				      	<div class="input-group-btn">
+							<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+	            		</div>
+		      		</div>
+		      	</form>
+		     </li>
+			</ul>
+		</div>
+	</nav>
+	<nav aria-label="breadcrumb" role="navigation">
+	  <ol class="breadcrumb">
+	  	<li class="breadcrumb-item"><a href="#">Beranda</a></li>
+	    <li class="breadcrumb-item"><a href="#">Kurikulum</a></li>
+	    <li class="breadcrumb-item"><a href="#">FASILKOM</a></li>
+	    <li class="breadcrumb-item active" aria-current="page">Sistem Informasi</li>
+	  </ol>
+	</nav>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				<!--<ul class="nav nav-pills nav-stacked">
+				    <li><a href="#">Kurikulum XXXX</a></li>
+				    <li><a href="#">Term 1</a></li>
+				    <li><a href="#">Term 2</a></li>
+				    <li><a href="#">Term 3</a></li>
+			  	</ul>-->
+			  	
+			  	<div class="tab">
+				  <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">London</button>
+				  <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
+				  <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
+				</div>
+				
+				<div id="London" class="tabcontent">
+				  <h3>London</h3>
+				  <p>London is the capital city of England.</p>
+				</div>
+				
+				<div id="Paris" class="tabcontent">
+				  <h3>Paris</h3>
+				  <p>Paris is the capital of France.</p> 
+				</div>
+				
+				<div id="Tokyo" class="tabcontent">
+				  <h3>Tokyo</h3>
+				  <p>Tokyo is the capital of Japan.</p>
+				</div>
+				
+				<script>
+				function openCity(evt, cityName) {
+				    var i, tabcontent, tablinks;
+				    tabcontent = document.getElementsByClassName("tabcontent");
+				    for (i = 0; i < tabcontent.length; i++) {
+				        tabcontent[i].style.display = "none";
+				    }
+				    tablinks = document.getElementsByClassName("tablinks");
+				    for (i = 0; i < tablinks.length; i++) {
+				        tablinks[i].className = tablinks[i].className.replace(" active", "");
+				    }
+				    document.getElementById(cityName).style.display = "block";
+				    evt.currentTarget.className += " active";
+				}
+				
+				// Get the element with id="defaultOpen" and click on it
+				document.getElementById("defaultOpen").click();
+				</script>
+			</div>
+			<div class="col-md-9">
+				<h1 th:text="'Kurikulum ' + ${kurikulum.nama_kurikulum} + ' - ' + ${kurikulum.term}">Kurikulum XXXX - Term X</h1>
+				<div class="pull-right" style="margin-bottom: 20px">
+					<a th:href="'/kurikulum/update/'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+					<a href="#"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+				</div>
+				<table class="table table-bordered" style="text-align:center; width:100%">
+					<thead style="margin-top:30px; width:100%">
+						<tr>
+							<td>No</td>
+							<td>Kode Mata Kuliah</td>
+							<td>Nama Mata Kuliah</td>
+							<td>SKS</td>
+							<td>Status</td>
+						</tr>
+					</thead>
+					<tbody style="margin-top:30px; width: 100%">
+						<tr th:each="mata_kuliah,iterationStatus:${mata_kuliah}">
+							<td th:text="${iterationStatus.count}">1</td>
+							<td th:text="${mata_kuliah.kode_matkul}">Kode Mata Kuliah</td>
+							<td th:text="${mata_kuliah.nama_matkul}">Nama Mata Kuliah</td>
+							<td th:text="${mata_kuliah.jumlah_sks}">SKS</td>
+							<td th:text="${mata_kuliah.status}">Status</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
