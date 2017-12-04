@@ -1,6 +1,8 @@
 package com.example.model;
 
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -13,4 +15,5 @@ public class MataKuliahKurikulumModel {
 	private int id_matkul;
 	private String status_matkul;
 	private int term;
+	private List<MataKuliahKurikulumModel> listMatkul;
 }
