@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Kurikulum</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" charset="UTF-8" />
+	<meta name="viewport" content="width=device-width" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!-- <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script> -->
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/">SI Kurikulum</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="/">Beranda</a></li>
+				<li><a href="/kurikulum">Kurikulum</a></li>
+				<li><a href="/mata-kuliah">Mata Kuliah</a></li>
+				<li><a href="/angkatan">Angkatan</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+		      <li><a href="#">Admin 1  <i class="fa fa-user-circle"></i></a></li>
+		      <li>
+				<form class="navbar-form" role="search">
+			      	<div class="input-group">
+			          	<input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+					      	<div class="input-group-btn">
+								<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+		            		</div>
+	            		</input>
+		      		</div>
+		      	</form>
+		     </li>
+			</ul>
+		</div>
+	</nav>
+	<nav aria-label="breadcrumb" role="navigation">
+	  <ol class="breadcrumb">
+	    <li class="breadcrumb-item"><a href="#">Beranda</a></li>
+	    <li class="breadcrumb-item active" aria-current="page">Kurikulum</li>
+	  </ol>
+	</nav>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-9">
+				<h3>Cari Kurikulum</h3>
+				<form class="form-group" action="/kurikulum/find/submit" method="GET"
+					th:object="${kurikulum}">
+					<table class="table-condensed" style="margin-top: 30px; width: 70%">
+						<tbody>
+							
+							<tr>
+								<td class="col-md-2"><label for="fakultas">Fakultas</label></td>
+								<td class="col-md-4"><select class="form-control"
+									name="fakultas">
+										<option selected="true" disabled="disabled" value="''">Pilih Fakultas</option>
+										<option th:value="'Fakultas Kedokteran'">Fakultas Kedokteran</option>
+										<option th:value="'Fakultas Kedokteran Gigi'">Fakultas Kedokteran Gigi</option>
+										<option th:value="'Fakultas Kesehatan Masyarakat'">Fakultas Kesehatan Masyarakat</option>
+										<option th:value="'Fakultas Ilmu Keperawatan'">Fakultas Ilmu Keperawatan</option>
+										<option th:value="'Fakultas Farmasi'">Fakultas Farmasi</option>
+										<option th:value="'Fakultas Matematika &amp; Ilmu Pengetahuan Alam'">Fakultas Matematika &amp; Ilmu Pengetahuan Alam</option>
+										<option th:value="'Fakultas Teknik'">Fakultas Teknik</option>
+										<option th:value="'Fakultas Ilmu Komputer'">Fakultas Ilmu Komputer</option>
+										<option th:value="'Fakultas Hukum'">Fakultas Hukum</option>
+										<option th:value="'Fakultas Ekonomi &amp; Bisnis'">Fakultas Ekonomi &amp; Bisnis</option>
+										<option th:value="'Fakultas Ilmu Pengetahuan Budaya'">Fakultas Ilmu Pengetahuan Budaya</option>
+										<option th:value="'Fakultas Psikologi'">Fakultas Psikologi</option>
+										<option th:value="'Fakultas Ilmu Sosial &amp; Ilmu Politik'">Fakultas Ilmu Sosial &amp; Ilmu Politik</option>
+										<option th:value="'Fakultas Ilmu Administrasi'">Fakultas Ilmu Administrasi</option>
+								</select></td>
+							</tr>
+							<tr>
+								<td class="col-md-2"><label for="prodi">Prodi</label></td>
+								<td class="col-md-4"><select class="form-control"
+									name="prodi"
+									required="true">
+										<option selected="true" disabled="disabled" value="''">Pilih Prodi</option>
+										<option th:value="'S1'">S1</option>
+										<option th:value="'S2'">S2</option>
+								</select></td>
+							</tr>
+							<tr>
+								<td class="col-md-2"></td>
+								<td class="col-md-4"><button class="btn btn-success" type="submit" name="action" value="save">Cari</button></td>
+							</tr>
+						</tbody>
+					</table>
+				</form>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+	</div>
+	<div class="navbar navbar-default navbar-fixed-bottom">
+    	<div class="container">
+     		<p class="navbar-text text-center">Sistem Informasi Kurikulum - Universitas Indonesia created by D-Kurikulum &copy; 2017</p>
+     	</div>
+	</div>
+</body>
+</html>

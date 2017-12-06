@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title>Update Mata Kuliah</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+	integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+	crossorigin="anonymous"></link>
+</head>
+
+<body>
+
+	<h1 class="page-header">Update Mata Kuliah</h1>
+
+	<form action="/matkul/update/submit" th:object="${matkul}" method="post">
+		<div>
+			<label for="nama_matkul">Nama Matkul</label> <input type="text" name="nama_matkul" th:field="*{nama_matkul}"/>
+		</div>
+		<div>
+			<label for="jumlah_sks">Jumlah SKS</label> <input type="text" name="jumlah_sks" th:field="*{jumlah_sks}"/>
+		</div>
+		<div>
+			<label for="prasyarat_sks">Prasyarat SKS</label> <input type="text" name="prasyarat_sks" th:field="*{prasyarat_sks}"/>
+		</div>
+		<ul th:each="prasyarats,iterationStatus: ${matkul.listPrasyarat}">
+    		<li th:text="${prasyarats.nama_matkul} + ' - SKS : ' + ${prasyarats.jumlah_sks}">
+    			Nama Matkul - SKS :-X
+    		</li>
+    		<a th:href="'/matkul/delete-prasyarat/' + ${prasyarats.id}"> Delete Prasyarat </a><br/>
+    	</ul>
+		<a th:href="'/matkul/add-prasyarat/' + ${matkul.id}"> Add Prasyarat </a><br/>
+		<div>
+			<button type="submit" name="action" value="save">Save</button>
+		</div>
+	</form>
+
+</body>
+
+</html>
+

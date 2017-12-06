@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Daftar Kurikulum</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+	integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+	crossorigin="anonymous"></link>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script> -->
+</head>
+<body>
+	<div th:replace="fragments/fragment :: header"></div>
+	<nav aria-label="breadcrumb" role="navigation">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="#">Beranda</a></li>
+			<li class="breadcrumb-item"><a href="#">Kurikulum</a></li>
+			<li class="breadcrumb-item"><a href="#">FASILKOM</a></li>
+			<li class="breadcrumb-item active" aria-current="page">Sistem
+				Informasi</li>
+		</ol>
+	</nav>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-9">
+				<!--<h1 th:text="'Kurikulum ' + ${fakultas.nama_fakultas} + ' - ' + ${prodi.nama_prodi}">Kurikulum Fakultas Ilmu Komputer</h1>-->
+				<div class="pull-right" style="margin-bottom: 20px">
+					<a th:href="'/kurikulum/add/'" class="btn btn-primary">Tambah Kurikulum</a>
+				</div>
+				<table class="table table-bordered" style="text-align:center; width:100%">
+					<thead style="margin-top:30px; width:100%">
+						<tr>
+							<td>No</td>
+							<td>Kode Kurikulum</td>
+							<td>Nama</td>
+							<td>Action</td>
+						</tr>
+					</thead>
+					<tbody style="margin-top:30px; width: 100%">
+						<tr th:each="kurikulum,iterationStatus:${kurikulums}">
+							<td th:text="${iterationStatus.count}">1</td>
+							<td th:text="${kurikulum.kode_kurikulum}">Kode Kurikulum</td>
+							<td th:text="${kurikulum.nama_kurikulum}">Nama</td>
+							<td><a th:href="'/kurikulum/view/' + ${kurikulum.id}"><i class="fa fa-eye" aria-hidden="true"></i></a> <a href="#"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+	</div>
+	<div th:replace="fragments/fragment :: footer"></div>
+</body>
+</html>

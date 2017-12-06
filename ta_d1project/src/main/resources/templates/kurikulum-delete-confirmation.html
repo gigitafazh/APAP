@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Beranda</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+	integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+	crossorigin="anonymous"></link>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div th:replace="fragments/fragment :: header"></div>
+	<div class="container" style="margin-top: 10px">
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-8 text-center">
+				<image src="images/logo.png" />
+				<h5 th:text="'Apakah anda yakin ingin menghapus ' + ${nama_kurikulum} + '?'">Apakah anda yakin ingin menghapus {nama kurikulum}?</h5>
+				<a th:href="'/kurikulum/result/'" class="btn btn-default">Tidak</a>
+				
+				<form th:action="@{/kurikulum/delete/} + ${id}">
+					<a type="submit" class="btn btn-default">Ya</a>
+				</form>
+				<hr />
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+	</div>
+	<div th:replace="fragments/fragment :: footer"></div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Angkatan - Pilih Prodi</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+	integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+	crossorigin="anonymous"></link>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div th:replace="fragments/fragment :: header"></div>
+	<div class="container">
+		<h3 class="text-center" style="margin-top: 25px;">Cari Angkatan Aktif</h3>
+		<div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-6 card" style="margin-top: 25px; padding: 25px">
+				<h5>Fakultas</h5>
+				<form action="/kurikulum/angkatan" method="GET">
+					<select disabled="true" class="form-control" name="kt">
+						<option th:value="${fakultas.id_fakultas}"
+							th:text="${fakultas.nama_fakultas}"></option>
+					</select>
+					<input type="hidden" name="fakultas" th:value="${fakultas.id_fakultas}"/>
+					<br/>
+					<h5>Prodi</h5>
+					<select class="form-control" name="prodi">
+						<option th:each="prodi : ${listProdi}"
+							th:value="${prodi.id_prodi}" th:text="${prodi.nama_prodi}"></option>
+					</select> <br />
+
+					<button type="submit" class="btn btn-primary">Lihat</button>
+				</form>
+			</div>
+			<div class="col-md-3"></div>
+		</div>
+	</div>
+	<div th:replace="fragments/fragment :: footer"></div>
+</body>
+</html>

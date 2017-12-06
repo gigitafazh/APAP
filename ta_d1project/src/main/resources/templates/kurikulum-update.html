@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Ubah Kurikulum</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+	integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+	crossorigin="anonymous"></link>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script> -->
+</head>
+<body>
+	<div th:replace="fragments/fragment :: header"></div>
+	<nav aria-label="breadcrumb" role="navigation">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="#">Beranda</a></li>
+			<li class="breadcrumb-item"><a href="#">Kurikulum</a></li>
+		</ol>
+	</nav>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
+				<center>
+					<h3>Ubah Kurikulum</h3>
+				</center>
+				<form action="/kurikulum/update/submit" method="post"
+					th:object="${kurikulum}">
+					<table>
+						<tbody>
+							<tr>
+								<td><label for="kode_kurikulum">Kode
+										Kurikulum</label></td>
+								<td><input class="form-control"
+									type="text" name="kode_kurikulum" th:field="*{kode_kurikulum}" th:value="${kurikulum.kode_kurikulum}" /></td>
+							</tr>
+							<tr>
+								<td><label for="nama_kurikulum">Nama
+										Kurikulum</label></td>
+								<td><input class="form-control"
+									type="text" name="nama_kurikulum" th:field="*{nama_kurikulum}" th:value="${kurikulum.nama_kurikulum}" /></td>
+							</tr>
+							<tr>
+								<td><label for="jumlah_sks_wajib">Jumlah
+										SKS Wajib</label></td>
+								<td><input class="form-control"
+									type="text" name="jumlah_sks_wajib"
+									th:field="*{jumlah_sks_wajib}" th:value="${kurikulum.jumlah_sks_wajib}" /></td>
+							</tr>
+							<tr>
+								<td><label for="jumlah_sks_pilihan">Jumlah
+										SKS Pilihan</label></td>
+								<td><input class="form-control"
+									type="text" name="jumlah_sks_pilihan"
+									th:field="*{jumlah_sks_pilihan}" th:value="${kurikulum.jumlah_sks_pilihan}" /></td>
+							</tr>
+						</tbody>
+					</table>
+					<input type="hidden" name="id_univ" th:value="${kurikulum.id_univ}" />
+					<input type="hidden" name="id_fakultas" th:value="${kurikulum.id_fakultas}" />
+					<input type="hidden" name="id_prodi" th:value="${kurikulum.id_prodi}" />
+					<input type="hidden" name="id" th:value="${kurikulum.id}" />
+					<div class="pull-right" style="margin-top: 20px; margin-right: 20px">
+						<a th:href="'/kurikulum/view/' + ${kurikulum.id}" class="btn btn-danger">Batal</a>
+						<button type="submit" class="btn btn-success">Simpan</button>
+					</div>
+				</form>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+	</div>
+	<div th:replace="fragments/fragment :: footer"></div>
+</body>
+</html>

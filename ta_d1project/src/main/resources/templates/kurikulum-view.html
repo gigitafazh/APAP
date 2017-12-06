@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Lihat Kurikulum</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+	integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+	crossorigin="anonymous"></link>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+	<div th:replace="fragments/fragment :: header"></div>
+	<nav aria-label="breadcrumb" role="navigation">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="#">Beranda</a></li>
+			<li class="breadcrumb-item"><a href="#">Kurikulum</a></li>
+			<li class="breadcrumb-item"><a href="#">FASILKOM</a></li>
+			<li class="breadcrumb-item active" aria-current="page">Sistem
+				Informasi</li>
+		</ol>
+	</nav>
+	<div class="container" style="padding-right:0px;">
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-8" style="margin-right:0px; padding-right:0px;">
+				<h1 th:text="${kurikulum.nama_kurikulum}">Kurikulum XXXX</h1>
+				<div class="pull-right" style="margin-top:30px; margin-bottom:30px;">
+					<a th:href="'/kurikulum/update/' + ${kurikulum.id}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+					<a th:href="'/kurikulum/delete/' + ${kurikulum.id}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+				</div>
+				<table class="table" style="font-size: 125%;">
+			    	<tbody>
+			     		<tr>
+							<td style="padding-top:0px; padding-bottom:0px;">Kode Kurikulum</td>
+							<td th:text="${kurikulum.kode_kurikulum}" style="padding-top:0px; padding-bottom:0px;"></td>
+						</tr>
+						<tr>
+							<td style="padding-top:0px; padding-bottom:0px;">Nama Kurikulum</td>
+							<td th:text="${kurikulum.nama_kurikulum}" style="padding-top:0px; padding-bottom:0px;"></td>
+						</tr>
+						<tr>
+							<td style="padding-top:0px; padding-bottom:0px;">Jumlah SKS Wajib</td>
+							<td th:text="${kurikulum.jumlah_sks_wajib}" style="padding-top:0px; padding-bottom:0px;"></td>
+						</tr>
+						<tr>
+							<td style="padding-top:0px; padding-bottom:0px;">Jumlah SKS Pilihan</td>
+							<td th:text="${kurikulum.jumlah_sks_pilihan}" style="padding-top:0px; padding-bottom:0px;"></td>
+						</tr>
+					</tbody>
+				</table>	
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+		
+		<!-- Term 1 -->
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-7" style="margin-right:0px; padding-right:0px;">
+				<h4 style="margin-top:50px; margin-bottom:5px;">Term 1</h4>
+				<table class="table table-bordered" style="margin-top:20px; margin-right:0px; padding-right:0px; text-align:center; width:100%">
+						<thead>
+							<tr>
+								<td>No</td>
+								<td>Kode Mata Kuliah</td>
+								<td>Nama Mata Kuliah</td>
+								<td>SKS</td>
+							</tr>
+						</thead>
+						<tbody style="margin-top:28px; width: 100%">
+							<tr th:each="matkulTerm,iterationStatus:${matkulTerm1}">
+							<td th:text="${iterationStatus.count}">1</td>
+							<td th:text="${matkulTerm.kode_matkul}">Kode Mata Kuliah</td>
+							<td th:text="${matkulTerm.nama_matkul}">Nama Mata Kuliah</td>
+							<td th:text="${matkulTerm.jumlah_sks}">SKS</td></tr>
+						</tbody>
+				</table>
+				
+			</div>
+			<div class="col-md-4" style="margin-left:0px; padding-left:0px;">
+				<table class="table table-bordered" style="margin-top:99px; margin-left:0px; padding-left:0px; text-align:center; width:100%">
+						<thead>
+							<tr>
+								<td>Status</td>
+								<td>Action</td>
+							</tr>
+						</thead>
+						<tbody style="margin-top:30px; width: 100%">
+							<tr th:each="matkulKurikulumTerm,iterationStatus:${matkulKurikulumTerm1}">
+							<td th:text="${matkulKurikulumTerm.status_matkul}">Status</td>
+							<td>
+								<a th:href="'/matkul-kurikulum/update/' + ${kurikulum.id} + '/' + ${matkulKurikulumTerm.id}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+								<a th:href="'/matkul-kurikulum/delete/' + ${kurikulum.id} + '/' + ${matkulKurikulumTerm.id}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+							</td>
+							</tr>
+						</tbody>
+				</table>
+			</div>	
+		</div>
+		
+		<!-- Term 2 -->
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-7" style="margin-right:0px; padding-right:0px;">
+				<h4 style="margin-top:50px; margin-bottom:5px;">Term 2</h4>
+				<table class="table table-bordered" style="margin-top:20px; margin-right:0px; padding-right:0px; text-align:center; width:100%">
+						<thead>
+							<tr>
+								<td>No</td>
+								<td>Kode Mata Kuliah</td>
+								<td>Nama Mata Kuliah</td>
+								<td>SKS</td>
+							</tr>
+						</thead>
+						<tbody style="margin-top:28px; width: 100%">
+							<tr th:each="matkulTerm,iterationStatus:${matkulTerm2}">
+							<td th:text="${iterationStatus.count}">1</td>
+							<td th:text="${matkulTerm.kode_matkul}">Kode Mata Kuliah</td>
+							<td th:text="${matkulTerm.nama_matkul}">Nama Mata Kuliah</td>
+							<td th:text="${matkulTerm.jumlah_sks}">SKS</td></tr>
+						</tbody>
+				</table>
+				
+			</div>
+			<div class="col-md-4" style="margin-left:0px; padding-left:0px;">
+				<table class="table table-bordered" style="margin-top:99px; margin-left:0px; padding-left:0px; text-align:center; width:100%">
+						<thead>
+							<tr>
+								<td>Status</td>
+								<td>Action</td>
+							</tr>
+						</thead>
+						<tbody style="margin-top:30px; width: 100%">
+							<tr th:each="matkulKurikulumTerm,iterationStatus:${matkulKurikulumTerm2}">
+							<td th:text="${matkulKurikulumTerm.status_matkul}">Status</td>
+							<td>
+								<a th:href="'/matkul-kurikulum/update/' + ${kurikulum.id} + '/' + ${matkulKurikulumTerm.id}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+								<a th:href="'/matkul-kurikulum/delete/' + ${kurikulum.id} + '/' + ${matkulKurikulumTerm.id}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+							</td>
+							</tr>
+						</tbody>
+				</table>
+			</div>	
+		</div>
+		
+		<!-- Term 3 -->
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-7" style="margin-right:0px; padding-right:0px;">
+				<h4 style="margin-top:50px; margin-bottom:5px;">Term 3</h4>
+				<table class="table table-bordered" style="margin-top:20px; margin-right:0px; padding-right:0px; text-align:center; width:100%">
+						<thead>
+							<tr>
+								<td>No</td>
+								<td>Kode Mata Kuliah</td>
+								<td>Nama Mata Kuliah</td>
+								<td>SKS</td>
+							</tr>
+						</thead>
+						<tbody style="margin-top:28px; width: 100%">
+							<tr th:each="matkulTerm,iterationStatus:${matkulTerm3}">
+							<td th:text="${iterationStatus.count}">1</td>
+							<td th:text="${matkulTerm.kode_matkul}">Kode Mata Kuliah</td>
+							<td th:text="${matkulTerm.nama_matkul}">Nama Mata Kuliah</td>
+							<td th:text="${matkulTerm.jumlah_sks}">SKS</td></tr>
+						</tbody>
+				</table>
+				
+			</div>
+			<div class="col-md-4" style="margin-left:0px; padding-left:0px;">
+				<table class="table table-bordered" style="margin-top:99px; margin-left:0px; padding-left:0px; text-align:center; width:100%">
+						<thead>
+							<tr>
+								<td>Status</td>
+								<td>Action</td>
+							</tr>
+						</thead>
+						<tbody style="margin-top:30px; width: 100%">
+							<tr th:each="matkulKurikulumTerm,iterationStatus:${matkulKurikulumTerm3}">
+							<td th:text="${matkulKurikulumTerm.status_matkul}">Status</td>
+							<td>
+								<a th:href="'/matkul-kurikulum/update/' + ${kurikulum.id} + '/' + ${matkulKurikulumTerm.id}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+								<a th:href="'/matkul-kurikulum/delete/' + ${kurikulum.id} + '/' + ${matkulKurikulumTerm.id}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+							</td>
+							</tr>
+						</tbody>
+				</table>
+			</div>	
+		</div>
+	</div>
+	
+	<div th:replace="fragments/fragment :: footer"></div>
+</body>
+</html>
